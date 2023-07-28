@@ -1,0 +1,16 @@
+"use strict";
+Object.defineProperty(exports, "__esModule", { value: true });
+const express_1 = require("express");
+const commentControllers_1 = require("../controllers/commentControllers");
+const commentMongooseRepository_1 = require("../infrastructure/mongoose/repository/commentMongooseRepository");
+const commentService_1 = require("../domain/services/commentService");
+const commentRouter = (0, express_1.Router)();
+const commentRepository = new commentMongooseRepository_1.CommentMongooseRepository();
+const commentService = new commentService_1.CommentService(commentRepository);
+const commentControllers = new commentControllers_1.CommentController(commentService);
+commentRouter.get('/:id', commentControllers.getCommentById);
+commentRouter.get('/', commentControllers.getAllComment);
+commentRouter.post('/', commentControllers.createComment);
+commentRouter.put('/:videoId/:id', commentControllers.updateComment);
+commentRouter.delete('/:videoId/:id', commentControllers.deleteComment);
+exports.default = commentRouter;
