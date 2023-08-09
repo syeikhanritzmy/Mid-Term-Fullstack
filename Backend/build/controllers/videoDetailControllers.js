@@ -10,6 +10,7 @@ var __awaiter = (this && this.__awaiter) || function (thisArg, _arguments, P, ge
 };
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.VideoDetailControllers = void 0;
+const uuid_1 = require("uuid");
 class VideoDetailControllers {
     constructor(videoDetailService) {
         this.videoDetailService = videoDetailService;
@@ -43,17 +44,16 @@ class VideoDetailControllers {
         });
     }
     createVideoDetail(req, res) {
+        var _a;
         return __awaiter(this, void 0, void 0, function* () {
             try {
                 const { title } = req.body;
                 const newVideoDetail = {
-                    videoId: '',
+                    videoId: (0, uuid_1.v4)(),
                     title,
-                    createdAt: undefined,
-                    updatedAt: undefined,
                 };
-                console.log(newVideoDetail);
-                const videodetailcreated = yield this.videoDetailService.createVideoDetail(newVideoDetail);
+                const videodetailcreated = yield ((_a = this.videoDetailService) === null || _a === void 0 ? void 0 : _a.createVideoDetail(newVideoDetail));
+                console.log('ini loeh', this.videoDetailService);
                 res.status(201).json({
                     videodetailcreated,
                     message: 'Video detail created successfully',

@@ -9,9 +9,9 @@ var __awaiter = (this && this.__awaiter) || function (thisArg, _arguments, P, ge
     });
 };
 Object.defineProperty(exports, "__esModule", { value: true });
-exports.productListMongooseRepository = void 0;
+exports.ProductListMongooseRepository = void 0;
 const productListMongooseSchema_1 = require("../Schema/productListMongooseSchema");
-class productListMongooseRepository {
+class ProductListMongooseRepository {
     findAll() {
         return __awaiter(this, void 0, void 0, function* () {
             try {
@@ -65,4 +65,4 @@ class productListMongooseRepository {
         });
     }
 }
-exports.productListMongooseRepository = productListMongooseRepository;
+exports.ProductListMongooseRepository = ProductListMongooseRepository;

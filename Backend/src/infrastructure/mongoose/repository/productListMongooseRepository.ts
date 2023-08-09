@@ -2,7 +2,7 @@ import { ProductListModel as ProductList } from '../../../domain/models/ProductL
 import { ProductListRepository } from '../../../domain/repositories/ProductListRepository';
 import { ProductListModel } from '../Schema/productListMongooseSchema';
 
-export class productListMongooseRepository implements ProductListRepository {
+export class ProductListMongooseRepository implements ProductListRepository {
   async findAll(): Promise<ProductList[]> {
     try {
       const products = await ProductListModel.find();

@@ -15,7 +15,7 @@ class VideoDetailMongooseRepository {
     findAll() {
         return __awaiter(this, void 0, void 0, function* () {
             try {
-                const videoDetails = yield videoDetailMongooseSchema_1.VideoDetail.find().lean();
+                const videoDetails = yield videoDetailMongooseSchema_1.VideoDetail.find();
                 return videoDetails;
             }
             catch (error) {
@@ -40,6 +40,7 @@ class VideoDetailMongooseRepository {
                 yield videoDetailMongooseSchema_1.VideoDetail.create(videoDetail);
             }
             catch (error) {
+                console.log(error);
                 throw new Error('Failed to create videoDetail into database');
             }
         });

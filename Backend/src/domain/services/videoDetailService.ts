@@ -2,11 +2,7 @@ import { VideoDetailModel } from '../models/VideoDetail.model';
 import { VideoDetailRepository } from '../repositories/VideoDetailRepository';
 
 export class VideoDetailService {
-  private readonly videoDetailRepository: VideoDetailRepository;
-
-  constructor(videoDetailRepository: VideoDetailRepository) {
-    this.videoDetailRepository = videoDetailRepository;
-  }
+  constructor(public videoDetailRepository: VideoDetailRepository) {}
 
   async getVideoDetailById(id: string): Promise<VideoDetailModel | null> {
     return await this.videoDetailRepository.findById(id);

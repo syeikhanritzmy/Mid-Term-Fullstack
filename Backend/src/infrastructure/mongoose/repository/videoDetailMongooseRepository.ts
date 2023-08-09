@@ -5,7 +5,7 @@ import { VideoDetail } from '../Schema/videoDetailMongooseSchema';
 export class VideoDetailMongooseRepository implements VideoDetailRepository {
   async findAll(): Promise<VideoDetailModel[]> {
     try {
-      const videoDetails = await VideoDetail.find().lean();
+      const videoDetails = await VideoDetail.find();
       return videoDetails;
     } catch (error) {
       throw new Error('failed to get all video Detail from database');
@@ -23,6 +23,7 @@ export class VideoDetailMongooseRepository implements VideoDetailRepository {
     try {
       await VideoDetail.create(videoDetail);
     } catch (error) {
+      console.log(error);
       throw new Error('Failed to create videoDetail into database');
     }
   }

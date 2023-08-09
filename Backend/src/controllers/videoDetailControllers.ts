@@ -1,13 +1,9 @@
 import { Request, Response } from 'express';
 import { VideoDetailService } from '../domain/services/videoDetailService';
 import { VideoDetailModel } from '../domain/models/VideoDetail.model';
-
+import { v4 as uuid } from 'uuid';
 export class VideoDetailControllers {
- private  videoDetailService: VideoDetailService;
-
-  constructor(videoDetailService: VideoDetailService) {
-    this.videoDetailService = videoDetailService;
-  }
+  constructor(public videoDetailService: VideoDetailService) {}
 
   async getVideoDetailById(req: Request, res: Response): Promise<void> {
     const videoId = req.params.videoId;
@@ -38,14 +34,12 @@ export class VideoDetailControllers {
     try {
       const { title } = req.body;
       const newVideoDetail: VideoDetailModel = {
-        videoId: '',
+        videoId: uuid(),
         title,
-        createdAt: undefined,
-        updatedAt: undefined,
       };
-      console.log(newVideoDetail);
       const videodetailcreated =
-        await this.videoDetailService.createVideoDetail(newVideoDetail);
+        await this.videoDetailService?.createVideoDetail(newVideoDetail);
+      console.log('ini loeh', this.videoDetailService);
       res.status(201).json({
         videodetailcreated,
         message: 'Video detail created successfully',

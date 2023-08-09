@@ -1,11 +1,11 @@
 import express, { Request, Response } from 'express';
 import { ProductListController } from '../controllers/productListControllers';
 import { ProductListService } from '../domain/services/productListService';
-import { productListMongooseRepository } from '../infrastructure/mongoose/repository/productListMongooseRepository';
+import { ProductListMongooseRepository } from '../infrastructure/mongoose/repository/productListMongooseRepository';
 
 const productRouter = express.Router();
 
-const productRepository = new productListMongooseRepository();
+const productRepository = new ProductListMongooseRepository();
 const productService = new ProductListService(productRepository);
 
 const productController = new ProductListController(productService);

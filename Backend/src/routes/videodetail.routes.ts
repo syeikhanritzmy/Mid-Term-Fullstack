@@ -9,10 +9,20 @@ const videoDetailRepository = new VideoDetailMongooseRepository();
 const videoDetailService = new VideoDetailService(videoDetailRepository);
 const videoDetailController = new VideoDetailControllers(videoDetailService);
 
-VideoDetailRouter.get('/', videoDetailController.getAllVideoDetails);
-VideoDetailRouter.get('/:videoId', videoDetailController.getVideoDetailById);
-VideoDetailRouter.post('/', videoDetailController.createVideoDetail);
-VideoDetailRouter.put('/:videoId', videoDetailController.updateVideoDetail);
-VideoDetailRouter.delete('/:videoId', videoDetailController.deleteVideoDetail);
+VideoDetailRouter.get('/', (req, res) =>
+  videoDetailController.getAllVideoDetails(req, res)
+);
+VideoDetailRouter.get('/:videoId', (req, res) =>
+  videoDetailController.getVideoDetailById(req, res)
+);
+VideoDetailRouter.post('/', (req, res) =>
+  videoDetailController.createVideoDetail(req, res)
+);
+VideoDetailRouter.put('/:videoId', (req, res) =>
+  videoDetailController.updateVideoDetail(req, res)
+);
+VideoDetailRouter.delete('/:videoId', (req, res) =>
+  videoDetailController.deleteVideoDetail(req, res)
+);
 
 export default VideoDetailRouter;

@@ -25,11 +25,8 @@ var __importStar = (this && this.__importStar) || function (mod) {
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.VideoDetail = void 0;
 const mongoose_1 = __importStar(require("mongoose"));
-const uuid_1 = require("uuid");
 const videoDetailSchema = new mongoose_1.Schema({
-    videoId: { type: String, required: true, unique: true, default: uuid_1.v4 },
+    videoId: { type: String, unique: true },
     title: { type: String, required: true },
-    createdAt: { type: Date, required: true, default: Date.now },
-    updatedAt: { type: Date, required: true, default: Date.now },
 });
 exports.VideoDetail = mongoose_1.default.model('videoDetail', videoDetailSchema);

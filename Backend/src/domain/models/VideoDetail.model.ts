@@ -1,6 +1,4 @@
 export interface VideoDetailModel {
-  videoId: string;
+  videoId?: string;
   title: string;
-  createdAt?: Date;
-  updatedAt?: Date;
 }

@@ -8,7 +8,7 @@ const productListControllers_1 = require("../controllers/productListControllers"
 const productListService_1 = require("../domain/services/productListService");
 const productListMongooseRepository_1 = require("../infrastructure/mongoose/repository/productListMongooseRepository");
 const productRouter = express_1.default.Router();
-const productRepository = new productListMongooseRepository_1.productListMongooseRepository();
+const productRepository = new productListMongooseRepository_1.ProductListMongooseRepository();
 const productService = new productListService_1.ProductListService(productRepository);
 const productController = new productListControllers_1.ProductListController(productService);
 productRouter.get('/', productController.getAllProduct);
