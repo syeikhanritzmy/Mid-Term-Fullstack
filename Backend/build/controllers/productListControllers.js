@@ -17,8 +17,8 @@ class ProductListController {
     getProductById(req, res) {
         return __awaiter(this, void 0, void 0, function* () {
             try {
-                const { id } = req.params;
-                const productById = yield this.productListController.getProductById(id);
+                const { _id } = req.params;
+                const productById = yield this.productListController.getProductById(_id);
                 if (productById) {
                     res.status(200).json(productById);
                 }
@@ -45,12 +45,14 @@ class ProductListController {
     createProduct(req, res) {
         return __awaiter(this, void 0, void 0, function* () {
             try {
-                const { linkProduct, price, title } = req.body;
+                const { linkProduct, price, title, videoId, description, imgthumbnail } = req.body;
                 const newProduct = {
-                    _id: '',
+                    videoId,
                     linkProduct,
                     price,
+                    imgthumbnail,
                     title,
+                    description,
                 };
                 yield this.productListController.createProduct(newProduct);
                 res.status(201).json(newProduct);
@@ -63,13 +65,16 @@ class ProductListController {
     updateProduct(req, res) {
         return __awaiter(this, void 0, void 0, function* () {
             try {
-                const { id } = req.params;
-                const { linkProduct, price, title } = req.body;
+                const { _id } = req.params;
+                const { linkProduct, price, title, videoId, description, imgthumbnail } = req.body;
                 const updatedProduct = {
-                    _id: id,
+                    _id: _id,
+                    videoId,
                     linkProduct,
                     price,
                     title,
+                    imgthumbnail,
+                    description,
                 };
                 yield this.productListController.updateProduct(id, updatedProduct);
                 res.status(200).json({ message: 'Video thumbnail updated successfully' });

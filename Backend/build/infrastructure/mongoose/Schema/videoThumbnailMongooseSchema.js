@@ -28,7 +28,6 @@ const mongoose_1 = __importStar(require("mongoose"));
 const videoThumbnailSchema = new mongoose_1.Schema({
     videoId: { type: String, required: true },
     urlImageThumbnail: { type: String, required: true },
-    productLists: [{ type: mongoose_1.Schema.Types.ObjectId, ref: 'ProductList' }],
     createdAt: { type: Date, required: true, default: Date.now },
     updatedAt: { type: Date, required: true, default: Date.now },
 });

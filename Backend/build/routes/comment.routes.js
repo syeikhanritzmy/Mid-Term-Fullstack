@@ -8,9 +8,19 @@ const commentRouter = (0, express_1.Router)();
 const commentRepository = new commentMongooseRepository_1.CommentMongooseRepository();
 const commentService = new commentService_1.CommentService(commentRepository);
 const commentControllers = new commentControllers_1.CommentController(commentService);
-commentRouter.get('/:id', commentControllers.getCommentById);
-commentRouter.get('/', commentControllers.getAllComment);
-commentRouter.post('/', commentControllers.createComment);
-commentRouter.put('/:videoId/:id', commentControllers.updateComment);
-commentRouter.delete('/:videoId/:id', commentControllers.deleteComment);
+commentRouter.get('/:id', (req, res) => {
+    commentControllers.getCommentById(req, res);
+});
+commentRouter.get('/', (req, res) => {
+    commentControllers.getAllComment(req, res);
+});
+commentRouter.post('/:videoId', (req, res) => {
+    commentControllers.createComment(req, res);
+});
+commentRouter.put('/:videoId/:id', (req, res) => {
+    commentControllers.updateComment(req, res);
+});
+commentRouter.delete('/:videoId/:id', (req, res) => {
+    commentControllers.deleteComment(req, res);
+});
 exports.default = commentRouter;

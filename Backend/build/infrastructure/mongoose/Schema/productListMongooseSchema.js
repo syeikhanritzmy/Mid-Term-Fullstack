@@ -27,7 +27,10 @@ exports.ProductListModel = void 0;
 const mongoose_1 = __importStar(require("mongoose"));
 const productListSchema = new mongoose_1.Schema({
     linkProduct: { type: String, required: true },
+    videoId: { type: String, required: true },
     title: { type: String, required: true },
+    description: { type: String, required: true },
     price: { type: Number, required: true },
+    imgthumbnail: { type: String, required: true },
 });
 exports.ProductListModel = mongoose_1.default.model('ProductList', productListSchema);

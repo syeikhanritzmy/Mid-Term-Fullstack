@@ -37,12 +37,12 @@ export class CommentController {
     const { username, comment } = req.body;
     const { videoId } = req.params;
     const newComment: Comment = {
-      _id: '',
       username,
       comment,
       timestamp: new Date(),
       videoId,
     };
+    console.log(newComment);
     try {
       await this.commentService.createComment(newComment);
       res.status(201).json({ message: 'sucess create comment' });
@@ -55,7 +55,6 @@ export class CommentController {
     const { username, comment } = req.body;
 
     const updatedComment: Comment = {
-      _id: commentId,
       username,
       comment,
       timestamp: new Date(),

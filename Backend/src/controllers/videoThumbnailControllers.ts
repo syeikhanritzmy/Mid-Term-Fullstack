@@ -34,12 +34,10 @@ export class VideoThumbNailControllers {
     }
   }
   async createVideoThumbnail(req: Request, res: Response): Promise<void> {
-    const { videoId, urlImageThumbnail, productLists } = req.body;
+    const { videoId, urlImageThumbnail } = req.body;
     const newVideoThumbnail: VideoThumbnailModel = {
-      _id: '',
       videoId,
       urlImageThumbnail,
-      productLists,
     };
     try {
       const createVideoThumbnail =
@@ -54,11 +52,10 @@ export class VideoThumbNailControllers {
 
   async updateVideoThumbnail(req: Request, res: Response): Promise<void> {
     const { id } = req.params;
-    const { videoId, productLists, urlImageThumbnail } = req.body;
+    const { videoId, urlImageThumbnail } = req.body;
     const updateVideoThumbnail: VideoThumbnailModel = {
       _id: id,
       videoId,
-      productLists,
       urlImageThumbnail,
     };
     try {

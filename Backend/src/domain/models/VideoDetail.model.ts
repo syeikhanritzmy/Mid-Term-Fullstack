@@ -1,4 +1,6 @@
 export interface VideoDetailModel {
-  videoId?: string;
+  _id?: string;
   title: string;
+  description: string;
+  linkVideo: string;
 }

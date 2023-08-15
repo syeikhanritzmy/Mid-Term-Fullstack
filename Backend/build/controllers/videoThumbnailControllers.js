@@ -44,12 +44,10 @@ class VideoThumbNailControllers {
     }
     createVideoThumbnail(req, res) {
         return __awaiter(this, void 0, void 0, function* () {
-            const { videoId, urlImageThumbnail, productLists } = req.body;
+            const { videoId, urlImageThumbnail } = req.body;
             const newVideoThumbnail = {
-                _id: '',
                 videoId,
                 urlImageThumbnail,
-                productLists,
             };
             try {
                 const createVideoThumbnail = yield this.VideoThumbNailControllers.createVideoThumbnail(newVideoThumbnail);
@@ -63,11 +61,10 @@ class VideoThumbNailControllers {
     updateVideoThumbnail(req, res) {
         return __awaiter(this, void 0, void 0, function* () {
             const { id } = req.params;
-            const { videoId, productLists, urlImageThumbnail } = req.body;
+            const { videoId, urlImageThumbnail } = req.body;
             const updateVideoThumbnail = {
                 _id: id,
                 videoId,
-                productLists,
                 urlImageThumbnail,
             };
             try {

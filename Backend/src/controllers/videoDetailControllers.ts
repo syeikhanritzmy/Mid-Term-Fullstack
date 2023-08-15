@@ -1,7 +1,7 @@
 import { Request, Response } from 'express';
 import { VideoDetailService } from '../domain/services/videoDetailService';
 import { VideoDetailModel } from '../domain/models/VideoDetail.model';
-import { v4 as uuid } from 'uuid';
+import { v4 as uuidv4 } from 'uuid';
 export class VideoDetailControllers {
   constructor(public videoDetailService: VideoDetailService) {}
 
@@ -32,10 +32,11 @@ export class VideoDetailControllers {
 
   async createVideoDetail(req: Request, res: Response): Promise<void> {
     try {
-      const { title } = req.body;
+      const { title, description, linkVideo } = req.body;
       const newVideoDetail: VideoDetailModel = {
-        videoId: uuid(),
         title,
+        description,
+        linkVideo,
       };
       const videodetailcreated =
         await this.videoDetailService?.createVideoDetail(newVideoDetail);
@@ -51,17 +52,16 @@ export class VideoDetailControllers {
   }
 
   async updateVideoDetail(req: Request, res: Response): Promise<void> {
-    const videoId = req.params.videoId;
-    const { title } = req.body;
+    const _id = req.params._id;
+    const { title, description, linkVideo } = req.body;
     const updatedVideoDetail: VideoDetailModel = {
-      videoId,
+      _id,
       title,
+      description,
+      linkVideo,
     };
     try {
-      await this.videoDetailService.updateVideoDetail(
-        videoId,
-        updatedVideoDetail
-      );
+      await this.videoDetailService.updateVideoDetail(_id, updatedVideoDetail);
       res.status(200).json({ message: 'Video detail updated successfully' });
     } catch (error) {
       res.status(500).json({ message: 'Failed to update video detail' });

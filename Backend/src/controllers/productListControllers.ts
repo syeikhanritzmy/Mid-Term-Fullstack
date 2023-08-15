@@ -12,8 +12,8 @@ export class ProductListController {
 
   async getProductById(req: Request, res: Response): Promise<void> {
     try {
-      const { id } = req.params;
-      const productById = await this.productListController.getProductById(id);
+      const { _id } = req.params;
+      const productById = await this.productListController.getProductById(_id);
       if (productById) {
         res.status(200).json(productById);
       } else {
@@ -34,12 +34,15 @@ export class ProductListController {
 
   async createProduct(req: Request, res: Response): Promise<void> {
     try {
-      const { linkProduct, price, title } = req.body;
+      const { linkProduct, price, title, videoId, description, imgthumbnail } =
+        req.body;
       const newProduct: ProductListModel = {
-        _id: '',
+        videoId,
         linkProduct,
         price,
+        imgthumbnail,
         title,
+        description,
       };
       await this.productListController.createProduct(newProduct);
       res.status(201).json(newProduct);
@@ -50,13 +53,17 @@ export class ProductListController {
 
   async updateProduct(req: Request, res: Response): Promise<void> {
     try {
-      const { id } = req.params;
-      const { linkProduct, price, title } = req.body;
+      const { _id } = req.params;
+      const { linkProduct, price, title, videoId, description, imgthumbnail } =
+        req.body;
       const updatedProduct: ProductListModel = {
-        _id: id,
+        _id: _id,
+        videoId,
         linkProduct,
         price,
         title,
+        imgthumbnail,
+        description,
       };
 
       await this.productListController.updateProduct(id, updatedProduct);

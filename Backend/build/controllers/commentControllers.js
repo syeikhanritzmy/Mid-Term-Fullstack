@@ -49,12 +49,12 @@ class CommentController {
             const { username, comment } = req.body;
             const { videoId } = req.params;
             const newComment = {
-                _id: '',
                 username,
                 comment,
                 timestamp: new Date(),
                 videoId,
             };
+            console.log(newComment);
             try {
                 yield this.commentService.createComment(newComment);
                 res.status(201).json({ message: 'sucess create comment' });
@@ -69,7 +69,6 @@ class CommentController {
             const { commentId, videoId } = req.params;
             const { username, comment } = req.body;
             const updatedComment = {
-                _id: commentId,
                 username,
                 comment,
                 timestamp: new Date(),

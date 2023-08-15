@@ -26,7 +26,8 @@ Object.defineProperty(exports, "__esModule", { value: true });
 exports.VideoDetail = void 0;
 const mongoose_1 = __importStar(require("mongoose"));
 const videoDetailSchema = new mongoose_1.Schema({
-    videoId: { type: String, unique: true },
     title: { type: String, required: true },
+    description: { type: String, required: true },
+    linkVideo: { type: String, required: true },
 });
 exports.VideoDetail = mongoose_1.default.model('videoDetail', videoDetailSchema);

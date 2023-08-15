@@ -10,10 +10,20 @@ const productService = new ProductListService(productRepository);
 
 const productController = new ProductListController(productService);
 
-productRouter.get('/', productController.getAllProduct);
-productRouter.get('/:productId', productController.getProductById);
-productRouter.post('/', productController.createProduct);
-productRouter.put('/:videoId/:productId', productController.updateProduct);
-productRouter.delete('/:videoId/:productId', productController.deleteProduct);
+productRouter.get('/', (req, res) => {
+  productController.getAllProduct(req, res);
+});
+productRouter.get('/:_id', (req, res) => {
+  productController.getProductById(req, res);
+});
+productRouter.post('/', (req, res) => {
+  productController.createProduct(req, res);
+});
+productRouter.put('/:videoId/:_id', (req, res) => {
+  productController.updateProduct(req, res);
+});
+productRouter.delete('/:videoId/:_id', (req, res) => {
+  productController.deleteProduct(req, res);
+});
 
 export default productRouter;
